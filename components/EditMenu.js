@@ -23,7 +23,7 @@ const EditMenu = ({id , isPinned }) => {
 //   };
 
   return (
-    <Popover className="flex flex-col cursor-pointer ">
+    <Popover className="flex flex-col cursor-pointer relative ">
     <Popover.Button className=" cursor-pointer outline-none" >
     <div className="text-[#999C9F]">
     <svg
@@ -36,14 +36,14 @@ const EditMenu = ({id , isPinned }) => {
     </svg>
   </div>
   </Popover.Button>
-  <Popover.Panel className="flex absolute max-w-fit mt-5 z-20 justify-center flex-col bg-white rounded ">
-        <button 
-        className="block"
+  <Popover.Panel className=" block flex absolute right-0  w-20 py-2 mt-5 z-20 flex-col bg-white rounded border-solid border ">
+        <button className="flex flex-row flex-start mb-2"
+        
         //   onClick={() => pinTodo(id, isPinned)}
         >
           <div>
             <svg
-              className='w-5 inline'
+              className='w-5 inline mr-2'
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               version="1.1"
@@ -65,10 +65,10 @@ const EditMenu = ({id , isPinned }) => {
             <span>Pin</span>
           </div>
         </button >
-        <button className="block">
+        <button className="block flex flex-row  flex-start mb-2">
           <div >
             <svg
-              className='w-5 inline'
+              className='w-5 inline mr-2'
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               version="1.1"
@@ -96,14 +96,13 @@ const EditMenu = ({id , isPinned }) => {
             </span>
           </div>
         </button>
+        <button  className="block flex flex-row  flex-start mb-2"
        
-        <button
-        className="block"
         //   onClick={() => deleteTodoById(id)}
         >
           <div>
             <svg
-              className='w-5 inline'
+              className='w-5 inline mr-2'
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               version="1.1"
