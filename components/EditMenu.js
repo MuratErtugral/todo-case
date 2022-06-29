@@ -1,49 +1,48 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import { Popover } from "@headlessui/react";
 import { mutate } from "swr";
 
-
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-const EditMenu = ({id , isPinned }) => {
+const EditMenu = ({ id, isPinned }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    const [isOpen, setIsOpen] = useState(false);
-
-      //Pin Todo By Id "PATCH" Function
-//   const pinTodo = async (id, isPinned) => {
-//     await fetcher("/api/todos/" + `${id}`, {
-//       method: "PATCH",
-//       body: JSON.stringify({ pinned: !isPinned }),
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json',
-//       }
-//     });
-//     mutate("/api/todos");
-//   };
+  //Pin Todo By Id "PATCH" Function
+  //   const pinTodo = async (id, isPinned) => {
+  //     await fetcher("/api/todos/" + `${id}`, {
+  //       method: "PATCH",
+  //       body: JSON.stringify({ pinned: !isPinned }),
+  //       headers: {
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json',
+  //       }
+  //     });
+  //     mutate("/api/todos");
+  //   };
 
   return (
     <Popover className="flex flex-col cursor-pointer relative ">
-    <Popover.Button className=" cursor-pointer outline-none" >
-    <div className="text-[#999C9F]">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-    >
-      <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-    </svg>
-  </div>
-  </Popover.Button>
-  <Popover.Panel className=" block flex absolute right-0  w-20 py-2 mt-5 z-20 flex-col bg-white rounded border-solid border ">
-        <button className="flex flex-row flex-start mb-2"
-        
-        //   onClick={() => pinTodo(id, isPinned)}
+      <Popover.Button className=" cursor-pointer outline-none">
+        <div className="text-[#999C9F]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+          </svg>
+        </div>
+      </Popover.Button>
+      <Popover.Panel className=" block flex  absolute right-0 w-40  p-5 mt-5 z-20 flex-col bg-white rounded border-solid border ">
+        <button
+          className="w-full  mb-2 flex flex-start"
+
+          //   onClick={() => pinTodo(id, isPinned)}
         >
           <div>
             <svg
-              className='w-5 inline mr-2'
+              className="w-5 inline mr-2"
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               version="1.1"
@@ -62,47 +61,36 @@ const EditMenu = ({id , isPinned }) => {
                 </g>
               </g>
             </svg>
-            <span>Pin</span>
-          </div>
-        </button >
-        <button className="block flex flex-row  flex-start mb-2">
-          <div >
-            <svg
-              className='w-5 inline mr-2'
-              xmlns="http://www.w3.org/2000/svg"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-              version="1.1"
-              x="0px"
-              y="0px"
-              viewBox="0 0 1000 1000"
-              enableBackground="new 0 0 1000 1000"
-              xmlSpace="preserve"
-            >
-              <g>
-                <path
-                  fill="#a9b1ba"
-                  d="M910.5,21.6H89.5C45.6,21.6,10,57.2,10,101.1v797.8c0,43.9,35.6,79.5,79.5,79.5H689c43.9,0,79.5-35.6,79.5-79.5V756.8h141.9c43.9,0,79.5-35.6,79.5-79.5V101.1C990,57.2,954.4,21.6,910.5,21.6 M910.5,101.1v576.2H689v221.6H89.5V101.1L910.5,101.1L910.5,101.1z"
-                />
-                <path fill="#a9b1ba" d="M170.5,325h650.7H170.5z" />
-                <path fill="#a9b1ba" d="M170.5,515.9h552.8H170.5z" />
-                <path
-                  fill="#a9b1ba"
-                  d="M745.3,954l-44-263.1l274.1,33L745.3,954L745.3,954z"
-                />
-              </g>
-            </svg>
-            <span >
-              Update
-            </span>
+            <span>Pin on the top</span>
           </div>
         </button>
-        <button  className="block flex flex-row  flex-start mb-2"
-       
-        //   onClick={() => deleteTodoById(id)}
+        <button className="w-3/4 mb-2 flex flex-start">
+          <div>
+            <svg
+              className="w-5 inline mr-2"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+              />
+            </svg>
+            <span>Update</span>
+          </div>
+        </button>
+        <button
+          className="w-3/4  mb-2 flex flex-start"
+
+          //   onClick={() => deleteTodoById(id)}
         >
           <div>
             <svg
-              className='w-5 inline mr-2'
+              className="w-5 inline mr-2"
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               version="1.1"
@@ -123,8 +111,8 @@ const EditMenu = ({id , isPinned }) => {
           </div>
         </button>
       </Popover.Panel>
-  </Popover>
-  )
-}
+    </Popover>
+  );
+};
 
-export default EditMenu
+export default EditMenu;
