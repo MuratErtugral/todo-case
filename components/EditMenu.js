@@ -23,8 +23,8 @@ const EditMenu = ({id , isPinned }) => {
 //   };
 
   return (
-    <Popover >
-    <Popover.Button >
+    <Popover className="flex flex-col cursor-pointer ">
+    <Popover.Button className=" cursor-pointer outline-none" >
     <div className="text-[#999C9F]">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -36,13 +36,14 @@ const EditMenu = ({id , isPinned }) => {
     </svg>
   </div>
   </Popover.Button>
-  <Popover.Panel>
-        <button
-          onClick={() => pinTodo(id, isPinned)}
+  <Popover.Panel className="flex absolute max-w-fit mt-5 z-20 justify-center flex-col bg-white rounded ">
+        <button 
+        className="block"
+        //   onClick={() => pinTodo(id, isPinned)}
         >
           <div>
             <svg
-              
+              className='w-5 inline'
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               version="1.1"
@@ -61,13 +62,13 @@ const EditMenu = ({id , isPinned }) => {
                 </g>
               </g>
             </svg>
-            <span>Pin on the top</span>
+            <span>Pin</span>
           </div>
-        </button>
-        <button >
+        </button >
+        <button className="block">
           <div >
             <svg
-              
+              className='w-5 inline'
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               version="1.1"
@@ -97,10 +98,12 @@ const EditMenu = ({id , isPinned }) => {
         </button>
        
         <button
+        className="block"
         //   onClick={() => deleteTodoById(id)}
         >
           <div>
             <svg
+              className='w-5 inline'
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               version="1.1"

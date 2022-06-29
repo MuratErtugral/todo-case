@@ -3,7 +3,7 @@
         {
             "id": 1643718566727,
             "title": "Example Todo 1",
-            "checked": false,
+            "checked": true,
             "pinned": false
         },
         {
