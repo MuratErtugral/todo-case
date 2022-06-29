@@ -16,6 +16,12 @@
             "id": 1652861685792,
             "title": "westerops example",
             "checked": false,
+            "pinned": true
+        },
+        {
+            "id": 1656492583032,
+            "title": "murat",
+            "checked": false,
             "pinned": false
         }
     ]
