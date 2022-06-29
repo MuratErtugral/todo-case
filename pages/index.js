@@ -89,20 +89,22 @@ const handleSubmit = (e) => {
 
         <ul>
           {data?.filter((item) => item.pinned)
-            .map(({ id, title , checked }) => (
+            .map(({ id, title , checked,pinned }) => (
               <Todos
               id={id}
               title={title}
               isChecked = {checked}
+              isPinned = {pinned}
               />
             ))},
           <hr />
           {data?.filter((item) => !item.pinned)
-            .map(({ id, title , checked }) => (
+            .map(({ id, title , checked , pinned }) => (
               <Todos
               id={id}
               title={title}
               isChecked = {checked}
+              isPinned = {pinned}
               />
             ))}
         </ul>
