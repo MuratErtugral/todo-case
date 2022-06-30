@@ -1,11 +1,12 @@
 import useSWR, { mutate } from "swr";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Todos from "../components/Todos";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function Home() {
   const { data, error } = useSWR("/api/todos", fetcher);
+  console.log(error)
   const [todoItem, setTodoItem] = useState(null);
 
   const addTodo = async (title) => {
@@ -22,7 +23,6 @@ export default function Home() {
 
 const handleSubmit = (e) => {
   e.preventDefault();
- // mutate("/api/todos", [...data, todoItem], false);
   console.log(todoItem);
   addTodo(todoItem);
   setTodoItem("");
@@ -91,6 +91,7 @@ const handleSubmit = (e) => {
           {data?.filter((item) => item.pinned)
             .map(({ id, title , checked,pinned }) => (
               <Todos
+              key={id}
               id={id}
               title={title}
               isChecked = {checked}
@@ -101,6 +102,7 @@ const handleSubmit = (e) => {
           {data?.filter((item) => !item.pinned)
             .map(({ id, title , checked , pinned }) => (
               <Todos
+              key={id}
               id={id}
               title={title}
               isChecked = {checked}

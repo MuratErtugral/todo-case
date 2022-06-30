@@ -3,14 +3,14 @@
         {
             "id": 1643718566727,
             "title": "Murat",
-            "checked": true,
-            "pinned": true
+            "checked": false,
+            "pinned": false
         },
         {
             "id": 1656587971961,
             "title": "deneme",
             "checked": true,
-            "pinned": true
+            "pinned": false
         },
         {
             "id": 1656588274640,
@@ -22,7 +22,7 @@
             "id": 1656615100805,
             "title": "murat",
             "checked": false,
-            "pinned": false
+            "pinned": true
         },
         {
             "id": 1656615103433,
