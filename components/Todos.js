@@ -18,7 +18,7 @@ const checkTodo = async (id, check) => {
     mutate("/api/todos");
   };
   return (
-    <div className="mt-2 w-full flex justify-between text-[#010A1B] font-['Inter'] ">
+    <div className=" mt-2 w-full flex justify-between text-[#010A1B] font-['Inter'] ">
       <label className="relative flex items-center justify-items-start">
       {isPinned ? <svg
             className="absolute  -left-7 rotate-[315deg]"
@@ -38,10 +38,11 @@ const checkTodo = async (id, check) => {
             </svg> : ""}
         <input
           type="checkbox"
-          className="w-4 h-4 border-0 focus:ring-0 checked:bg-white"
+          className=" w-4 h-4 accent-blue-500   "
+          id="checkbox"
           checked={isChecked}
           onChange={(e) => checkTodo(id, e.target.checked)}
-        />
+        /> <label for="checkbox" className="murat" ></label>
         <span className="ml-2">
           <li key={id}>{title}</li>
         </span>
