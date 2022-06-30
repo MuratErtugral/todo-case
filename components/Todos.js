@@ -42,7 +42,7 @@ const checkTodo = async (id, check) => {
           id="checkbox"
           checked={isChecked}
           onChange={(e) => checkTodo(id, e.target.checked)}
-        /> <label for="checkbox" className="murat" ></label>
+        />
         <span className="ml-2">
           <li key={id}>{title}</li>
         </span>
