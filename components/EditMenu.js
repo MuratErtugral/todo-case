@@ -1,24 +1,49 @@
 import React, { useState } from "react";
 import { Popover } from "@headlessui/react";
 import { mutate } from "swr";
+import {pin} from "../helpers/pin.png"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-const EditMenu = ({ id, isPinned }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const EditMenu = ({ id, isPinned, title }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [updateItem, setUpdateItem] = useState(title);
 
-  //Pin Todo By Id "PATCH" Function
-  //   const pinTodo = async (id, isPinned) => {
-  //     await fetcher("/api/todos/" + `${id}`, {
-  //       method: "PATCH",
-  //       body: JSON.stringify({ pinned: !isPinned }),
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json',
-  //       }
-  //     });
-  //     mutate("/api/todos");
-  //   };
+    const pinTodo = async (id, isPinned) => {
+        await fetcher("/api/todos/" + `${id}`, {
+          method: "PATCH",
+          body: JSON.stringify({ pinned: !isPinned }),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        });
+        mutate("/api/todos");
+      };
+
+    const updateTodo = async (id, text) => {
+        await fetcher("/api/todos/" + `${id}`, {
+          method: "PATCH",
+          body: JSON.stringify({ title: text }),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        });
+        mutate("/api/todos");
+      };
+  
+  //Delete Todo By Id "DELETE" Function
+  const deleteTodo = async (id) => {
+      await fetcher("/api/todos/" + `${id}`, {
+        method: "DELETE",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      });
+      mutate("/api/todos");
+    };
 
   return (
     <Popover className="flex flex-col cursor-pointer relative ">
@@ -35,43 +60,42 @@ const EditMenu = ({ id, isPinned }) => {
         </div>
       </Popover.Button>
       <Popover.Panel className=" block flex  absolute right-0 w-40  p-5 mt-5 z-20 flex-col bg-white rounded border-solid border ">
-        <button
-          className="w-full  mb-2 flex flex-start"
+        <Popover.Button
+         className="w-full  mb-2 flex flex-start"
 
-          //   onClick={() => pinTodo(id, isPinned)}
+        onClick={() => pinTodo(id, isPinned)}
         >
-          <div>
+        <div>
             <svg
-              className="w-5 inline mr-2"
+              className="w-5 inline mr-2 rotate-[315deg]"
               xmlns="http://www.w3.org/2000/svg"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-              version="1.1"
-              x="0px"
-              y="0px"
-              viewBox="0 0 1000 1000"
-              enableBackground="new 0 0 1000 1000"
-              xmlSpace="preserve"
+              enable-background="new 0 0 24 24"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              fill="#010A1B"
             >
               <g>
-                <g transform="matrix(1 0 0 -1 0 1008)">
-                  <path
-                    fill="#a9b1ba"
-                    d="M675,998l315-315L815,508l-70,70L617.6,450.6c23.3-56.4,28.8-116,16.5-178.9c-12.3-62.9-41.2-116.7-86.5-161.4L377.5,280.5L185,88L10,18l70,175l192.5,192.5L102.4,555.6c44.7,45.4,98.5,74.2,161.4,86.5s122.5,6.8,178.9-16.5L570,753l-70,70L675,998z"
-                  />
-                </g>
+                <rect fill="none" height="24" width="24" />
+              </g>
+              <g>
+                <path d="M14,4v5c0,1.12,0.37,2.16,1,3H9c0.65-0.86,1-1.9,1-3V4H14 M17,2H7C6.45,2,6,2.45,6,3c0,0.55,0.45,1,1,1c0,0,0,0,0,0l1,0v5 c0,1.66-1.34,3-3,3v2h5.97v7l1,1l1-1v-7H19v-2c0,0,0,0,0,0c-1.66,0-3-1.34-3-3V4l1,0c0,0,0,0,0,0c0.55,0,1-0.45,1-1 C18,2.45,17.55,2,17,2L17,2z" />
               </g>
             </svg>
-            <span>Pin on the top</span>
+
+           {isPinned ? <span>Unpin </span>  : <span>Pin on the top</span>} 
           </div>
-        </button>
-        <button className="w-3/4 mb-2 flex flex-start">
+        </Popover.Button>
+        <button className="w-3/4 mb-2 flex flex-start"
+        onClick={() => setIsOpen(true)}
+        >
           <div>
             <svg
               className="w-5 inline mr-2"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke="#010A1B"
               stroke-width="2"
             >
               <path
@@ -83,10 +107,33 @@ const EditMenu = ({ id, isPinned }) => {
             <span>Update</span>
           </div>
         </button>
-        <button
+        {isOpen && (
+          <div>
+            <input
+                className=" block w-full"
+                value={updateItem}
+                name="memo"
+                onChange={(e) => setUpdateItem(e.target.value)}
+            />
+            <div className="flex justify-between ">
+                <Popover.Button
+                className="bg-green-600 rounded"
+                onClick={(e) => {
+                updateTodo(id, updateItem);
+                setIsOpen(false)
+                }}>Edit</Popover.Button>
+
+                <button
+                className="bg-red-600 rounded"
+                onClick={() => setIsOpen(false)}
+                >Close</button>
+            </div>
+          </div>
+        )}
+        <Popover.Button
           className="w-3/4  mb-2 flex flex-start"
 
-          //   onClick={() => deleteTodoById(id)}
+        onClick={() => deleteTodo(id)}
         >
           <div>
             <svg
@@ -102,14 +149,14 @@ const EditMenu = ({ id, isPinned }) => {
             >
               <g>
                 <path
-                  fill="#a9b1ba"
+                  fill="#010A1B"
                   d="M648.5,10h-297c-32.8,0-59.4,26.6-59.4,59.4v118.8H84.2c-32.8,0-59.4,26.6-59.4,59.4c0,32.8,26.6,59.4,59.4,59.4h831.5c32.8,0,59.4-26.6,59.4-59.4c0-32.8-26.6-59.4-59.4-59.4H707.9V69.4C707.9,36.6,681.3,10,648.5,10z M618.8,188.2H381.2V99.1h237.6V188.2L618.8,188.2z M113.9,396.1v475.2c0,65.7,53.2,118.8,118.8,118.8h534.5c65.6,0,118.8-53.1,118.8-118.8V396.1H767.3v475.2H648.5V396.1h-89.1v475.2H440.6V396.1h-89.1v475.2H232.7V396.1H113.9L113.9,396.1z"
                 />
               </g>
             </svg>
             <span>Delete</span>
           </div>
-        </button>
+        </Popover.Button>
       </Popover.Panel>
     </Popover>
   );

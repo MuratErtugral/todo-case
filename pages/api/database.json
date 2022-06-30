@@ -2,33 +2,21 @@
     "todos": [
         {
             "id": 1643718566727,
-            "title": "Example Todo 1",
+            "title": "Murat",
             "checked": true,
             "pinned": false
         },
         {
             "id": 1643718584922,
-            "title": "Example Todo 2",
-            "checked": false,
+            "title": "İbrahim",
+            "checked": true,
             "pinned": false
         },
         {
             "id": 1652861685792,
-            "title": "westerops example",
+            "title": "ADammm",
             "checked": true,
             "pinned": true
-        },
-        {
-            "id": 1656492583032,
-            "title": "murat",
-            "checked": true,
-            "pinned": false
-        },
-        {
-            "id": 1656510270963,
-            "title": "deneme",
-            "checked": false,
-            "pinned": false
         }
     ]
 }
