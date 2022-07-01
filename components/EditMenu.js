@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { Popover } from "@headlessui/react";
 import { mutate } from "swr";
 
-
+// Helper used when fetching data from API
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const EditMenu = ({ id, isPinned, title }) => {
+    //Controls whether the update input area  is opened or closed
     const [isOpen, setIsOpen] = useState(false);
+
     const [updateItem, setUpdateItem] = useState(title);
 
+    // pinned or unpinned todo by id 
     const pinTodo = async (id, isPinned) => {
         await fetcher("/api/todos/" + `${id}`, {
           method: "PATCH",
@@ -21,6 +24,7 @@ const EditMenu = ({ id, isPinned, title }) => {
         mutate("/api/todos");
       };
 
+    //when user update their todoitem
     const updateTodo = async (id, text) => {
         await fetcher("/api/todos/" + `${id}`, {
           method: "PATCH",
@@ -47,6 +51,7 @@ const EditMenu = ({ id, isPinned, title }) => {
 
   return (
     <Popover className="flex flex-col cursor-pointer relative ">
+      {/* //The three dot for open or close the popup// */}
       <Popover.Button className=" cursor-pointer outline-none">
         <div className="text-[#999C9F]">
           <svg
@@ -59,6 +64,7 @@ const EditMenu = ({ id, isPinned, title }) => {
           </svg>
         </div>
       </Popover.Button>
+      
       <Popover.Panel className=" block flex  absolute right-0 w-40  p-5 mt-5 z-20 flex-col bg-white rounded border-solid border ">
         <Popover.Button
          className="w-full  mb-2 flex flex-start"

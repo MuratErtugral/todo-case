@@ -2,13 +2,18 @@ import useSWR, { mutate } from "swr";
 import { useState } from "react";
 import Todos from "../components/Todos";
 
+// Helper used when fetching data from API
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function Home() {
-  const { data, error } = useSWR("http://localhost:3000/api/todos", fetcher);
-  console.log(error)
+  //Getting todos from API
+  const { data, error } = useSWR("/api/todos", fetcher);
+  // console.log(error)
+
+  //The variable that we assign the data from the input while the user is adding a new task
   const [todoItem, setTodoItem] = useState("");
 
+  //Create new todo by title post function.
   const addTodo = async (title) => {
     await fetcher("/api/todos", {
       method: "POST",
@@ -21,9 +26,9 @@ export default function Home() {
     mutate("/api/todos");
   };
 
+  // Functions that run when the form is submitted
 const handleSubmit = (e) => {
   e.preventDefault();
-  console.log(todoItem);
   addTodo(todoItem);
   setTodoItem("");
 }
@@ -41,7 +46,7 @@ const handleSubmit = (e) => {
       onSubmit={handleSubmit}>
         <div className="flex flex-row justify-center">
           <div className="w-full flex h-10 items-center pl-2 pr-2 mb-2 rounded border-2 border-[#999C9F]">
-            <svg
+            <svg //the icon that before add task placeholder 
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -69,7 +74,7 @@ const handleSubmit = (e) => {
             className="w-10 h-10 bg-[#21A7F9] px-2 ml-2 rounded"
             type="submit"
           >
-            <svg
+            <svg //the icon in submit button
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
               viewBox="0 0 24 24"
@@ -88,7 +93,7 @@ const handleSubmit = (e) => {
         </form>
 
         <ul>
-          {data?.filter((item) => item.pinned)
+          {data?.filter((item) => item.pinned)//filtering pinned todos
             .map(({ id, title , checked,pinned }) => (
               <Todos
               key={id}

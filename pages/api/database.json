@@ -3,8 +3,8 @@
         {
             "id": 1643718566727,
             "title": "Murat",
-            "checked": false,
-            "pinned": false
+            "checked": true,
+            "pinned": true
         },
         {
             "id": 1656587971961,
@@ -16,7 +16,7 @@
             "id": 1656588274640,
             "title": "Tes",
             "checked": false,
-            "pinned": false
+            "pinned": true
         },
         {
             "id": 1656615100805,

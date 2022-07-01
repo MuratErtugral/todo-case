@@ -1,11 +1,13 @@
 import React from "react";
-import useSWR, { mutate } from "swr";
+import { mutate } from "swr";
 import EditMenu from "./EditMenu";
 
-
+// Helper used when fetching data from API
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
-const Todos = ({id,title,isChecked, isPinned }) => {
 
+//props
+const Todos = ({id,title,isChecked, isPinned }) => {
+// checked or unchecked todo by id 
 const checkTodo = async (id, check) => {
     await fetcher("/api/todos/" + `${id}`, {
       method: "PATCH",
@@ -47,7 +49,8 @@ const checkTodo = async (id, check) => {
           <li key={id}>{title}</li>
         </span>
       </label>
-      <EditMenu
+      
+      <EditMenu // pop up menu component
       key={id} 
       id = {id}
       isPinned = {isPinned}
