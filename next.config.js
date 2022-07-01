@@ -3,13 +3,14 @@ const nextConfig = {
   reactStrictMode: true,
 
 }
-async rewrites() {
+
+
+module.exports = { nextConfig,
+  async rewrites() {
   return [
     {
       source: '/api/:path*',
       destination: 'https://todo-app-netxjs.vercel.app/',
     },
   ]
-}
-
-module.exports = {nextConfig,rewrites}
+}}
