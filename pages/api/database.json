@@ -29,6 +29,12 @@
             "title": "murat",
             "checked": false,
             "pinned": false
+        },
+        {
+            "id": 1656673541182,
+            "title": "murat",
+            "checked": true,
+            "pinned": true
         }
     ]
 }
