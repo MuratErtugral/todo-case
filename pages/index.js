@@ -5,9 +5,9 @@ import Todos from "../components/Todos";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function Home() {
-  const { data, error } = useSWR("/api/todos", fetcher);
+  const { data, error } = useSWR("http://localhost:3000/api/todos", fetcher);
   console.log(error)
-  const [todoItem, setTodoItem] = useState(null);
+  const [todoItem, setTodoItem] = useState("");
 
   const addTodo = async (title) => {
     await fetcher("/api/todos", {
