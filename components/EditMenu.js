@@ -67,7 +67,7 @@ const EditMenu = ({ id, isPinned, title }) => {
       
       <Popover.Panel className=" block flex md:p-3 sm:p-1 absolute right-0 w-40 p-5 mt-5 z-20 flex-col bg-white rounded border-solid border ">
         <Popover.Button
-         className="w-full bg-blue-500  mb-2 flex flex-start"
+         className="w-full mb-2 flex flex-start"
 
         onClick={() => pinTodo(id, isPinned)}
         >
