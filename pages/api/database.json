@@ -1,38 +1,20 @@
 {
     "todos": [
         {
-            "id": 1643718566727,
-            "title": "Murat",
-            "checked": true,
-            "pinned": false
-        },
-        {
             "id": 1656587971961,
             "title": "deneme",
-            "checked": false,
-            "pinned": false
+            "checked": true,
+            "pinned": true
         },
         {
             "id": 1656588274640,
             "title": "Tes",
             "checked": false,
-            "pinned": true
-        },
-        {
-            "id": 1656615103433,
-            "title": "murat",
-            "checked": true,
             "pinned": false
         },
         {
             "id": 1656674175546,
-            "title": "task",
-            "checked": true,
-            "pinned": false
-        },
-        {
-            "id": 1656674351304,
-            "title": "mtest",
+            "title": "Murat",
             "checked": true,
             "pinned": false
         }

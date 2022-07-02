@@ -65,9 +65,9 @@ const EditMenu = ({ id, isPinned, title }) => {
         </div>
       </Popover.Button>
       
-      <Popover.Panel className=" block flex  absolute right-0 w-40  p-5 mt-5 z-20 flex-col bg-white rounded border-solid border ">
+      <Popover.Panel className=" block flex md:p-3 sm:p-1 absolute right-0 w-40 p-5 mt-5 z-20 flex-col bg-white rounded border-solid border ">
         <Popover.Button
-         className="w-full  mb-2 flex flex-start"
+         className="w-full bg-blue-500  mb-2 flex flex-start"
 
         onClick={() => pinTodo(id, isPinned)}
         >
@@ -75,7 +75,7 @@ const EditMenu = ({ id, isPinned, title }) => {
             <svg
               className="w-5 inline mr-2 rotate-[315deg]"
               xmlns="http://www.w3.org/2000/svg"
-              enablBackground="new 0 0 24 24"
+              enableBackground="new 0 0 24 24"
               height="24px"
               viewBox="0 0 24 24"
               width="24px"
