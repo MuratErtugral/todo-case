@@ -4,7 +4,7 @@ import { Context } from "../context";
 import PopupMenu from "./PopupMenu";
 
 // Helper used when fetching data from API
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 
 //props
 const Todos = ({id,todo,isChecked, isPinned  }) => {
