@@ -1,3 +1,123 @@
+commit 6abe99bf64bca04fa99180647acd3d34e9aa6e27
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Sat Jul 2 12:25:52 2022 +0300
+
+    bug fixed
+
+ components/EditMenu.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 9341950c7e50bdbd618f4571d5483c50b2e4cdc0
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Sat Jul 2 12:16:25 2022 +0300
+
+    node version added
+
+ package.json | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 71e4ac4a73d62dfa1fc515892555ae48499ed7ee
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Sat Jul 2 12:13:13 2022 +0300
+
+    package edit
+
+ package.json | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 561b60f99223137cbe4d249e9b6907aa2af99255
+Merge: 5c6c413 2f1d7ca
+Author: MuratErtugral <93777203+MuratErtugral@users.noreply.github.com>
+Date:   Sat Jul 2 11:51:30 2022 +0300
+
+    Merge pull request #1 from MuratErtugral/main
+    
+    Main branch created
+
+commit 2f1d7cacb66d4d2b4ba2d7126e0793a7a52036f4
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Sat Jul 2 11:43:38 2022 +0300
+
+    Main branch created
+
+ components/EditMenu.js  |  6 +++---
+ package.json            |  1 +
+ pages/api/database.json | 24 +++---------------------
+ 3 files changed, 7 insertions(+), 24 deletions(-)
+
+commit 5c6c413bf62d28adf57331a113b978e2b4389975
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Fri Jul 1 14:39:28 2022 +0300
+
+    module.export
+
+ next.config.js | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+commit 4b40b9ff8aff60bcfe7ab8e7205ede995791e20b
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Fri Jul 1 14:31:10 2022 +0300
+
+    database fixed
+
+ next.config.js          | 19 +------------------
+ pages/api/database.json |  2 +-
+ 2 files changed, 2 insertions(+), 19 deletions(-)
+
+commit 8f962c9c586fc935afc076d3289f5bf6ed440d47
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Fri Jul 1 14:28:43 2022 +0300
+
+    bug fixed
+
+ next.config.js          | 24 ++++++++++++++++--------
+ pages/api/database.json |  4 ++--
+ 2 files changed, 18 insertions(+), 10 deletions(-)
+
+commit 4c797ad22f81eae9f19f1008a3f5f057a5baba4b
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Fri Jul 1 14:21:00 2022 +0300
+
+    v1.0
+
+ next.config.js          | 9 +++++----
+ pages/api/database.json | 6 ++++++
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+
+commit 07dc4d1ca222d348ee6e83f816d0d63aabc8ae4f
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Fri Jul 1 14:18:58 2022 +0300
+
+    config
+
+ next.config.js          | 19 ++++++++++---------
+ pages/api/database.json | 12 +++---------
+ 2 files changed, 13 insertions(+), 18 deletions(-)
+
+commit 7ee5b682c16d85801400cf858d3247fe005d2e19
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Fri Jul 1 14:15:02 2022 +0300
+
+    config  edit
+
+ next.config.js          | 8 ++++++++
+ pages/api/database.json | 6 ++++++
+ 2 files changed, 14 insertions(+)
+
+commit c939e12baae5eeb4117d9101a5de2ac313ee80d1
+Author: MuratErtugral <muratertugral93@gmail.com>
+Date:   Fri Jul 1 12:49:25 2022 +0300
+
+    Project done and git log history added
+
+ components/EditMenu.js       |   8 +-
+ components/Todos.js          |  11 ++-
+ components/gitloghistory.txt | Bin 0 -> 10876 bytes
+ gitloghistory.txt            | 169 +++++++++++++++++++++++++++++++++++++++++++
+ pages/api/database.json      |   6 +-
+ pages/index.js               |  17 +++--
+ 6 files changed, 197 insertions(+), 14 deletions(-)
+
 commit 90ebbf2b4a51429d115a7941c9f7fbda7cb57e1d
 Author: MuratErtugral <muratertugral93@gmail.com>
 Date:   Fri Jul 1 11:58:25 2022 +0300

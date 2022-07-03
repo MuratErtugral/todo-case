@@ -2,6 +2,7 @@ import useSWR, { mutate } from "swr";
 import { useState } from "react";
 import Todos from "../components/Todos";
 
+
 // Helper used when fetching data from API
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -11,26 +12,39 @@ export default function Home() {
   // console.log(error)
 
   //The variable that we assign the data from the input while the user is adding a new task
-  const [todoItem, setTodoItem] = useState("");
+  const [todoItem, setTodoItem] = useState({title : "", id: null});
 
-  //Create new todo by title post function.
-  const addTodo = async (title) => {
-    await fetcher("/api/todos", {
-      method: "POST",
-      body: JSON.stringify({ title: title }),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    });
-    mutate("/api/todos");
+  //Create new todo by title or update by id post function.  
+  const addTodo = async (request) => {
+    console.log(request.id)
+    if (request.id){
+      await fetcher("/api/todos/" + `${request.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ title: request.title }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      });
+    }else {
+      await fetcher("/api/todos", {
+        method: "POST",
+        body: JSON.stringify({ title: request.title }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      });}
+      mutate("/api/todos");
+
+
   };
 
   // Functions that run when the form is submitted
 const handleSubmit = (e) => {
   e.preventDefault();
   addTodo(todoItem);
-  setTodoItem("");
+  setTodoItem({title:"",id:null});
 }
 
 
@@ -65,9 +79,9 @@ const handleSubmit = (e) => {
             <input
               className="flex w-full h-full p-0 items-center text-sm ml-2 outline-none placeholder:text-[#010A1B] text-[#010A1B]"
               type="text"
-              value={todoItem}
+              value={todoItem.title}
               placeholder="Add a task..."
-              onChange={(e) => setTodoItem(e.target.value)}
+              onChange={(e) => setTodoItem({title:e.target.value,id:todoItem.id})}
             />
           </div>
           <button
@@ -101,9 +115,10 @@ const handleSubmit = (e) => {
               title={title}
               isChecked = {checked}
               isPinned = {pinned}
+              setTodoItem = {setTodoItem}
               />
             ))},
-          <hr />
+          <hr className="pb-4"/>
           {data?.filter((item) => !item.pinned)
             .map(({ id, title , checked , pinned }) => (
               <Todos
@@ -112,6 +127,7 @@ const handleSubmit = (e) => {
               title={title}
               isChecked = {checked}
               isPinned = {pinned}
+              setTodoItem = {setTodoItem}
               />
             ))}
         </ul>

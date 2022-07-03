@@ -1,12 +1,12 @@
 import React from "react";
 import { mutate } from "swr";
-import EditMenu from "./EditMenu";
+import PopupMenu from "./PopupMenu";
 
 // Helper used when fetching data from API
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 //props
-const Todos = ({id,title,isChecked, isPinned }) => {
+const Todos = ({id,title,isChecked, isPinned , setTodoItem , addTodo }) => {
 // checked or unchecked todo by id 
 const checkTodo = async (id, check) => {
     await fetcher("/api/todos/" + `${id}`, {
@@ -50,11 +50,12 @@ const checkTodo = async (id, check) => {
         </span>
       </label>
       
-      <EditMenu // pop up menu component
+      <PopupMenu // pop up menu component
       key={id} 
       id = {id}
       isPinned = {isPinned}
       title = {title}
+      setTodoItem = {setTodoItem}
       />
     </div>
   );
