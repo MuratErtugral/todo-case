@@ -19,7 +19,7 @@ const Provider = ({ children }) => {
     const [todoItem, setTodoItem] = useState({todo : "", id: null});
   
 
-  return <Context.Provider value={{todoItem,setTodoItem, todos}}>{children}</Context.Provider>;
+  return <Context.Provider value={{todoItem,setTodoItem, todos , fetcher}}>{children}</Context.Provider>;
 };
 
 export { Context, Provider };

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { mutate } from "swr";
+import { Context } from "../context";
 import PopupMenu from "./PopupMenu";
 
 // Helper used when fetching data from API
@@ -7,6 +8,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 //props
 const Todos = ({id,todo,isChecked, isPinned  }) => {
+  const { fetcher } = useContext(Context);
 // checked or unchecked todo by id 
 const checkTodo = async (id, check) => {
     await fetcher("/api/todos/" + `${id}`, {

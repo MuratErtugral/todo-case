@@ -4,10 +4,10 @@ import { mutate } from "swr";
 import { Context } from "../context";
 
 // Helper used when fetching data from API
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 
 const PopupMenu = ({ id, isPinned, todo}) => {
-  const { setTodoItem } = useContext(Context);
+  const { setTodoItem , fetcher } = useContext(Context);
   //Controls whether the update input area  is opened or closed
   const [popup, setPopup] = useState(false);
 

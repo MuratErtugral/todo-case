@@ -5,10 +5,10 @@ import { Context } from "../context";
 
 
 // Helper used when fetching data from API
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 
 export default function Home() {
-  const { todoItem,setTodoItem , todos } = useContext(Context);
+  const { todoItem,setTodoItem , todos , fetcher } = useContext(Context);
 
   //Create new todo by title or update by id post function.  
   const addTodo = async (request) => {
