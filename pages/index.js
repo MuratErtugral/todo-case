@@ -1,18 +1,14 @@
 import useSWR, { mutate } from "swr";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Todos from "../components/Todos";
+import { Context } from "../context";
 
 
 // Helper used when fetching data from API
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function Home() {
-  //Getting todos from API
-  const { data, error } = useSWR("/api/todos", fetcher);
-  // console.log(error)
-
-  //The variable that we assign the data from the input while the user is adding a new task
-  const [todoItem, setTodoItem] = useState({title : "", id: null});
+  const { todoItem,setTodoItem , todos } = useContext(Context);
 
   //Create new todo by title or update by id post function.  
   const addTodo = async (request) => {
@@ -107,27 +103,25 @@ const handleSubmit = (e) => {
         </form>
 
         <ul>
-          {data?.filter((item) => item.pinned)//filtering pinned todos
+          {todos?.filter((item) => item.pinned)//filtering pinned todos
             .map(({ id, title , checked,pinned }) => (
               <Todos
               key={id}
               id={id}
-              title={title}
+              todo={title}
               isChecked = {checked}
               isPinned = {pinned}
-              setTodoItem = {setTodoItem}
               />
             ))},
           <hr className="pb-4"/>
-          {data?.filter((item) => !item.pinned)
+          {todos?.filter((item) => !item.pinned)
             .map(({ id, title , checked , pinned }) => (
               <Todos
               key={id}
               id={id}
-              title={title}
+              todo={title}
               isChecked = {checked}
               isPinned = {pinned}
-              setTodoItem = {setTodoItem}
               />
             ))}
         </ul>

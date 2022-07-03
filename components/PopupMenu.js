@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import { mutate } from "swr";
+import { Context } from "../context";
 
 // Helper used when fetching data from API
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-const PopupMenu = ({ id, isPinned, title, setTodoItem }) => {
+const PopupMenu = ({ id, isPinned, todo}) => {
+  const { setTodoItem } = useContext(Context);
   //Controls whether the update input area  is opened or closed
   const [popup, setPopup] = useState(false);
-
-  const [updateItem, setUpdateItem] = useState(title);
 
   // pinned or unpinned todo by id
   const pinTodo = async (id, isPinned) => {
@@ -82,7 +82,7 @@ const PopupMenu = ({ id, isPinned, title, setTodoItem }) => {
             </button>
             <button
               className="w-3/4 mb-2 flex flex-start"
-              onClick={() => setTodoItem({ title: title, id: id })}
+              onClick={() => setTodoItem({ title: todo, id: id })}
             >
               <svg
                 className="w-5 inline mr-2"

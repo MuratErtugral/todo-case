@@ -6,7 +6,7 @@ import PopupMenu from "./PopupMenu";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 //props
-const Todos = ({id,title,isChecked, isPinned , setTodoItem , addTodo }) => {
+const Todos = ({id,todo,isChecked, isPinned  }) => {
 // checked or unchecked todo by id 
 const checkTodo = async (id, check) => {
     await fetcher("/api/todos/" + `${id}`, {
@@ -46,7 +46,7 @@ const checkTodo = async (id, check) => {
           onChange={(e) => checkTodo(id, e.target.checked)}
         />
         <span className="ml-2">
-          <li key={id}>{title}</li>
+          <li key={id}>{todo}</li>
         </span>
       </label>
       
@@ -54,8 +54,7 @@ const checkTodo = async (id, check) => {
       key={id} 
       id = {id}
       isPinned = {isPinned}
-      title = {title}
-      setTodoItem = {setTodoItem}
+      todo = {todo}
       />
     </div>
   );
